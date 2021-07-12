@@ -1,4 +1,4 @@
-#include "../plot2d.hpp"
+#include "../include/plot2d.hpp"
 #include <math.h>
 
 int main() {

@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "plot2d.hpp"
+#include "../include/plot2d.hpp"
 
 #define NAME        "plot2d"
 #define ERR_MSG     NAME ":"
