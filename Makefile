@@ -27,7 +27,7 @@ $O :
 $O/errors.o : $S/errors.cpp $I/errors.hpp
 	$(BUILD) -c -o $O/errors.o $S/errors.cpp
 
-$O/functions.o : $S/functions.cpp $I/functions.hpp $I/geometry.hpp
+$O/functions.o : $S/functions.cpp $I/functions.hpp $I/geometry.hpp $I/errors.hpp
 	$(BUILD) -c -o $O/functions.o $S/functions.cpp
 
 $O/geometry.o : $S/geometry.cpp $I/geometry.hpp $I/errors.hpp

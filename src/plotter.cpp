@@ -1,5 +1,3 @@
-//#include <X11/keysym.h>
-
 #include "../include/plotter.hpp"
 #include "../include/errors.hpp"
 
