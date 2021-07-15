@@ -7,13 +7,14 @@
 
 namespace Plot2D {
 
-struct Func {
+class Func {
+public:
     Func(const Color& c = Color()) : color(c) {}
     virtual ~Func() {}
     const Color& get_color() const { return color; }
-    virtual Func *copy() const = 0;
-    virtual double function(double) const = 0;
-    double operator()(double x) const { return function(x); }
+    virtual Func* copy() const = 0;
+    virtual double operator()(double x) const = 0;
+private:
     Color color;
 };
 
@@ -21,8 +22,8 @@ class UsualFunc : public Func {
 public:
     typedef double (*FP)(double);
     UsualFunc(FP fp, const Color& c = Color()) : Func(c), fp(fp) {}
-    virtual double function(double x) const { return (*fp)(x); }
-    virtual Func *copy() const;
+    virtual double operator()(double x) const { return (*fp)(x); }
+    virtual Func* copy() const;
 private:
     FP fp;
 };

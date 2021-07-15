@@ -3,8 +3,8 @@
 
 using namespace Plot2D;
 
-Func *UsualFunc::copy() const {
-    UsualFunc *p = new UsualFunc(fp, color);
+Func* UsualFunc::copy() const {
+    UsualFunc *p = new UsualFunc( fp, get_color() );
     return p;
 }
 
