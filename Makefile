@@ -19,7 +19,7 @@ install : $O libplot2d.a plot2d.hpp
 deinstall :
 	rm -f libplot2d.a plot2d.hpp
 
-tests : $O $O/sin
+tests : $O $O/sin $O/sincos
 
 $O :
 	mkdir $O
@@ -60,3 +60,6 @@ plot2d.hpp : $I/plot2d.hpp
 
 $O/sin : $T/sin.cpp libplot2d.a plot2d.hpp
 	$(BUILD) $(LIB) -o $O/sin $T/sin.cpp
+
+$O/sincos : $T/sincos.cpp libplot2d.a plot2d.hpp
+	$(BUILD) $(LIB) -o $O/sincos $T/sincos.cpp
