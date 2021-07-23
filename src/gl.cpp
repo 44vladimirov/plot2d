@@ -1,3 +1,5 @@
+#include <string>
+
 #include "../include/gl.hpp"
 #include "../include/errors.hpp"
 
@@ -115,9 +117,9 @@ GLuint GL::compile_shader(GLenum type, const char *code) {
     if(compiled == GL_FALSE) {
         GLint length;
         glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &length);
-        char *log = new char[length];
-        glGetShaderInfoLog(shader, length, &length, log);
-        throw Error(Error::GL_SHADER_COMPILE, log);
+        std::string log(length, '*');
+        glGetShaderInfoLog(shader, length, &length, log.data());
+        throw Error(Error::GL_SHADER_COMPILE, std::move(log));
     }
     return shader;
 }
@@ -132,9 +134,9 @@ void GL::init_program() {
     if(linked == GL_FALSE) {
         GLint length;
         glGetProgramiv(program, GL_INFO_LOG_LENGTH, &length);
-        char *log = new char[length];
-        glGetProgramInfoLog(program, length, &length, log);
-        throw Error(Error::GL_SHADER_LINK, log);
+        std::string log(length, '*');
+        glGetProgramInfoLog(program, length, &length, log.data());
+        throw Error(Error::GL_SHADER_LINK, std::move(log));
     }
     glDetachShader(program, vertex);
     glDetachShader(program, fragment);

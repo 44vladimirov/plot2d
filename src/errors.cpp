@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <iostream>
+#include <cstdlib>
 
 #include "../include/errors.hpp"
 
@@ -32,6 +32,8 @@ const char *Error::msgs[] = {
 };
 
 void Error::terminate(const char *heading) const {
-    fprintf(stderr, log ? "%s%s\n%s\n" : "%s%s\n", heading, msg, log);
-    exit(code);
+    std::cerr << heading << msg << '\n';
+    if( !log.empty() )
+        std::cerr << log;
+    std::exit(code);
 }

@@ -1,5 +1,5 @@
 COMP    ?= c++
-FLAGS   += -Wall
+FLAGS   += -Wall -std=c++17
 INCLUDE ?= -I /usr/local/include
 INCLUDE_ = ${INCLUDE:-I%=-isystem%}
 LIB     ?= -L /usr/local/lib -l X11 -l GL -l m -L . -l plot2d
