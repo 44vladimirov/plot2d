@@ -6,32 +6,32 @@
 using namespace Plot2D;
 
 const char * const GL::vertex_shader_code =
-    "#version 330 core"                                 "\n"
-                                                        "\n"
-    "in vec2 vertex;"                                   "\n"
-                                                        "\n"
-    "uniform mat3 transform;"                           "\n"
-    "uniform float ratio;"                              "\n"
-                                                        "\n"
-    "void main(void) {"                                 "\n"
-    "    vec3 v = transform * vec3(vertex, 1);"         "\n"
-    "    if(ratio > 1)"                                 "\n"
-    "        v.x *= 1.0 / ratio;"                       "\n"
-    "    else"                                          "\n"
-    "        v.y *= ratio;"                             "\n"
-    "    gl_Position = vec4(v.x, v.y, 0, 1);"           "\n"
-    "}"                                                 "\n";
+    "#version 330 core\n"
+    "\n"
+    "in vec2 vertex;\n"
+    "\n"
+    "uniform mat3 transform;\n"
+    "uniform float ratio;\n"
+    "\n"
+    "void main(void) {\n"
+    "    vec3 v = transform * vec3(vertex, 1);\n"
+    "    if(ratio > 1)\n"
+    "        v.x *= 1.0 / ratio;\n"
+    "    else\n"
+    "        v.y *= ratio;\n"
+    "    gl_Position = vec4(v.x, v.y, 0, 1);\n"
+    "}\n";
 
 const char * const GL::fragment_shader_code = 
-    "#version 330 core"                                 "\n"
-                                                        "\n"
-    "out vec4 c;"                                       "\n"
-                                                        "\n"
-    "uniform vec4 color;"                               "\n"
-                                                        "\n"
-    "void main(void) {"                                 "\n"
-    "    c = color;"                                    "\n"
-    "}"                                                 "\n";
+    "#version 330 core\n"
+    "\n"
+    "out vec4 c;\n"
+    "\n"
+    "uniform vec4 color;\n"
+    "\n"
+    "void main(void) {\n"
+    "    c = color;\n"
+    "}\n";
 
 GLX::GLX(const char *name) {
     if( NULL == (dpy = XOpenDisplay(NULL)) )

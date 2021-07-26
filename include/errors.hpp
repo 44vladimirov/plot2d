@@ -19,18 +19,16 @@ public:
         GL_SHADER_CONFIG,
         LAST // needed for counting
     };
-    Error(Type t, const std::string& log = std::string())
-        : code(codes[t]), msg(msgs[t]), log(log) {}
-    int get_code() const { return code; }
-    const char* get_msg() const { return msg; }
-    const char* get_log() const { return log.data(); }
+    Error(Type t, const std::string& log = std::string()) : tp(t), lg(log) {}
+    int code() const { return codes[tp]; }
+    const char* msg() const { return msgs[tp]; }
+    const char* log() const { return lg.data(); }
     void terminate(const char *heading) const;
 private:
     static const char *msgs[Type::LAST];
     static const int codes[Type::LAST];
-    int code;
-    const char *msg;
-    std::string log;
+    Type tp;
+    std::string lg;
 };
 
 } // namespace Plot2D {

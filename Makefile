@@ -11,7 +11,7 @@ I  = include
 S  = src
 T  = tests
 
-MODNAMES = errors functions geometry gl lines plotter scope
+MODNAMES = errors functions geometry gl lines plotter view
 TESTS    = sin sincos
 
 TESTS := ${TESTS:%=$O/%}

@@ -1,28 +1,28 @@
 #ifndef __PLOT2D_PLOTTER_HPP__
 #define __PLOT2D_PLOTTER_HPP__
 
-#include "scope.hpp"
+#include <vector>
+
+#include "view.hpp"
 #include "gl.hpp"
 
 namespace Plot2D {
 
 class Plotter {
 public:
-    Plotter(const char *name, const FuncPack& fp)
-        : glx(GLX(name)), scp(Scope(fp)) { shift(0); }
+    Plotter(const char *name, const FuncPack& fp);
     void loop();
 private:
     GLX glx;
     GL gl;
-    Scope scp;
-    View *viewp;
-    XEvent ev;
-    int redraw;
-    int stop;
-    void shift(unsigned i) { gl.hand_transform( (viewp = scp[i])->matrix() ); }
+    std::vector<View> views;
+    View *active;
+    bool redraw;
+    bool stop;
+    void shift(size_t i);
     void draw();
-    void adjust();
-    void keyctl();
+    void adjust(const XEvent& ev);
+    void keyctl(XEvent& ev);
 };
 
 } // namespace Plot2D {

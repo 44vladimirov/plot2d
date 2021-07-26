@@ -20,7 +20,7 @@ const int Error::codes[] = {
 };
 
 const char *Error::msgs[] = {
-    ERR_MSG " color out of range",
+    ERR_MSG " invalid color",
     ERR_MSG " out of range indexing",
     ERR_MSG " X server connection failed",
     ERR_MSG " GLX configuration failed",
@@ -32,8 +32,8 @@ const char *Error::msgs[] = {
 };
 
 void Error::terminate(const char *heading) const {
-    std::cerr << heading << msg << '\n';
-    if( !log.empty() )
-        std::cerr << log;
-    std::exit(code);
+    std::cerr << heading << msgs[tp] << '\n';
+    if( !lg.empty() )
+        std::cerr << lg;
+    std::exit(codes[tp]);
 }

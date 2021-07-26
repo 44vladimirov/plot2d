@@ -12,8 +12,8 @@ class GLX {
 public:
     GLX(const char *name);
     ~GLX();
-    Display *get_display() { return dpy; }
-    const GLXWindow& get_glxwin() const { return glxwin; }
+    Display* display() { return dpy; }
+    const GLXWindow& window() const { return glxwin; }
 private:
     Display *dpy;
     Window xwin;
@@ -30,7 +30,7 @@ public:
     void hand_ratio(GLfloat d) const;
     void hand_color(const GLfloat *d) const;
 private:
-    static const char * const vertex_shader_code;
+    static const char * const   vertex_shader_code;
     static const char * const fragment_shader_code;
     GLuint vertex;
     GLuint fragment;

@@ -1,6 +1,8 @@
 #ifndef __PLOT2D_LINES_HPP__
 #define __PLOT2D_LINES_HPP__
 
+#include <vector>
+
 #include "functions.hpp"
 #include "gl.hpp"
 
@@ -8,22 +10,15 @@ namespace Plot2D {
 
 class Line {
 public:
-    Line() : pts(NULL) {}
-    Line(unsigned amt, const Color& c = Color());
-    virtual ~Line();
-    Line& operator=(Line&& l);
-    Point& operator[](unsigned i);
-    void set_mode(GLenum m) { mode = m; }
+    Line(const Color& c = Color()) : c(c) {}
+    virtual ~Line() {}
+    void add(const Point& p) { pts.push_back(p); }
     void draw(const GL& gl);
 private:
-    Point *pts;
-    unsigned size;
-    unsigned amt;
-    GLuint buf;
+    std::vector<Point> pts;
+    Color c;
+protected:
     GLenum mode;
-    Color color;
-    Line(const Line&) {}
-    Line& operator=(const Line&) { return *this; }
 };
 
 class Straight : public Line {

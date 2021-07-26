@@ -1,5 +1,5 @@
 #include "../plot2d.hpp"
-#include <math.h>
+#include <cmath>
 
 int main() {
     using namespace Plot2D;

@@ -12,11 +12,11 @@ public:
         GLfloat red = 0, GLfloat green = 0, GLfloat blue = 0,
         GLfloat alpha = 1
     );
-    const GLfloat *get_all() const { return &r; }
-    GLfloat get_red() const { return r; }
-    GLfloat get_green() const { return g; }
-    GLfloat get_blue() const { return b; }
-    GLfloat get_alpha() const { return a; }
+    const GLfloat* data() const { return &r; }
+    GLfloat   red() const { return r; }
+    GLfloat green() const { return g; }
+    GLfloat  blue() const { return b; }
+    GLfloat alpha() const { return a; }
 private:
     GLfloat r;
     GLfloat g;
@@ -26,12 +26,12 @@ private:
 
 class Point {
 public:
-    Point(GLfloat x = 0, GLfloat y = 0) : x(x), y(y) {}
-    GLfloat get_x() const { return x; }
-    GLfloat get_y() const { return y; }
+    Point(GLfloat x = 0, GLfloat y = 0) : px(x), py(y) {}
+    GLfloat x() const { return px; }
+    GLfloat y() const { return py; }
 private:
-    GLfloat x;
-    GLfloat y;
+    GLfloat px;
+    GLfloat py;
 };
 
 class Viewport {
@@ -40,9 +40,9 @@ public:
         const Point& left_bottom = Point(),
         const Point&   right_top = Point(), unsigned resolution = 0
     ) : lb(left_bottom), rt(right_top), res(resolution) {}
-    const Point& get_left_bottom() const { return lb; }
-    const Point& get_right_top() const { return rt; }
-    unsigned get_resolution() const { return res; }
+    const Point& left_bottom() const { return lb; }
+    const Point&   right_top() const { return rt; }
+    unsigned resolution() const { return res; }
 private:
     Point lb;
     Point rt;
