@@ -4,7 +4,7 @@
 
 ## Requirements
 
-* `BSDmake` or `GNUmake` build automation tools
+* `BSDmake` or `GNUmake` build automation tool
 * `C++17` compiler
 * [`OpenGL`](http://opengl.org) specification library
 * [`Xlib`](http://x.org) library
@@ -69,7 +69,7 @@ UsualFunc(FP fp, const Color& c = Color());
 ```
 The `UsualFunc` class is a simple realization of inheritance from `Func`, where
 function to be drawn is explicitly given (`FP` pointer). As a general matter the
-descendant of `Func` may be more complicated (it can describes the
+descendant of `Func` may be more complicated (it can describe the
 [Lagrange polinomial](http://en.wikipedia.org/wiki/Lagrange_polynomial) of a
 certain function, for example).
 

@@ -2,7 +2,7 @@ COMP    ?= c++
 FLAGS   += -Wall -std=c++17
 INCLUDE ?= -I /usr/local/include
 INCLUDE_ = ${INCLUDE:-I%=-isystem%}
-LIB     ?= -L /usr/local/lib -l X11 -l GL -l m -L . -l plot2d
+LIB     ?= -L /usr/local/lib -l X11 -l GL -l m
 BUILD    = $(COMP) $(FLAGS) $(INCLUDE_) -MMD
 BUILD_T  = $(COMP) $(FLAGS) $(INCLUDE) $(LIB)
 
@@ -47,4 +47,4 @@ plot2d.hpp : $I/plot2d.hpp
 	cp $I/plot2d.hpp plot2d.hpp
 
 $(TESTS) : ${@:$O/%=$T/%.cpp} libplot2d.a plot2d.hpp
-	$(BUILD_T) -o $@ ${@:$O/%=$T/%.cpp}
+	$(BUILD_T) -o $@ ${@:$O/%=$T/%.cpp} libplot2d.a
