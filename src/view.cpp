@@ -66,7 +66,7 @@ View::View(const FuncSet& fs) : vp(fs.viewport()) {
     const GLfloat x = -(x1 + x2) / 2.0;
     const GLfloat y = -(y1 + y2) / 2.0;
     const GLfloat s = x2 - x1 > y2 - y1 ? 2.0 / (x2 - x1) : 2.0 / (y2 - y1);
-    m = Matrix(x, y) *= Matrix(s);
+    m_ = Matrix(x, y) *= Matrix(s);
 }
 
 void View::draw(const GL& gl) const {

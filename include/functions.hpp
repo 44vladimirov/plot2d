@@ -11,34 +11,34 @@ namespace Plot2D {
 class Func {
 public:
     typedef std::shared_ptr<Func> Pointer;
-    Func(const Color& c = Color()) : c(c) {}
+    Func(const Color& c = Color()) : c_(c) {}
     virtual ~Func() {}
-    const Color& color() const { return c; }
+    const Color& color() const { return c_; }
     virtual Pointer copy() const = 0;
     virtual double operator()(double x) const = 0;
 private:
-    Color c;
+    Color c_;
 };
 
 class UsualFunc : public Func {
 public:
     typedef double (*FP)(double);
-    UsualFunc(FP fp, const Color& c = Color()) : Func(c), fp(fp) {}
+    UsualFunc(FP fp, const Color& c = Color()) : Func(c), fp_(fp) {}
     Pointer copy() const { return Pointer(new UsualFunc(*this)); }
-    double operator()(double x) const { return (*fp)(x); }
+    double operator()(double x) const { return (*fp_)(x); }
 private:
-    FP fp;
+    FP fp_;
 };
 
 class FuncSet {
 public:
-    FuncSet(const Viewport& vp = Viewport()) : vp(vp) {}
+    FuncSet(const Viewport& vp = Viewport()) : vp_(vp) {}
     size_t size() const { return set.size(); }
-    const Viewport& viewport() const { return vp; }
+    const Viewport& viewport() const { return vp_; }
     const Func& operator[](size_t i) const;
     void add(const Func& f) { set.push_back(f.copy()); }
 private:
-    Viewport vp;
+    Viewport vp_;
     std::vector<Func::Pointer> set;
 };
 

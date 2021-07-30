@@ -7,6 +7,8 @@ Plotter::Plotter(const char *name, const FuncPack& fp) : glx(GLX(name)) {
     views.reserve(fp.size());
     for(size_t i = 0; i < fp.size(); i++)
         views.push_back(View(fp[i]));
+    if(views.empty())
+        throw Error(Error::INIT);
     shift(0);
 }
 

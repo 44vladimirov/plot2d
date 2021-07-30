@@ -22,13 +22,13 @@ private:
 class View {
 public:
     View(const FuncSet& fs);
-    void transform(const Matrix& m) { this->m *= m; }
+    void transform(const Matrix& m) { m_ *= m; }
     void draw(const GL& gl) const;
-    const GLfloat* matrix() const { return m.data(); }
+    const GLfloat* matrix() const { return m_.data(); }
 private:
     Viewport vp;
     std::vector<Line> lines;
-    Matrix m;
+    Matrix m_;
 };
 
 } // namespace Plot2D {

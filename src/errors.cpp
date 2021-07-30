@@ -16,7 +16,8 @@ const int Error::codes[] = {
     5,
     6,
     7,
-    8
+    8,
+    9
 };
 
 const char *Error::msgs[] = {
@@ -28,12 +29,13 @@ const char *Error::msgs[] = {
     ERR_MSG " GLX context attachment failed",
     ERR_MSG " OpenGL shader compilation failed",
     ERR_MSG " OpenGL shader linkage failed",
-    ERR_MSG " OpenGL shader configuration failed"
+    ERR_MSG " OpenGL shader configuration failed",
+    ERR_MSG " invalid initialization"
 };
 
 void Error::terminate(const char *heading) const {
-    std::cerr << heading << msgs[tp] << '\n';
-    if( !lg.empty() )
-        std::cerr << lg;
-    std::exit(codes[tp]);
+    std::cerr << heading << msgs[t_] << '\n';
+    if( !log_.empty() )
+        std::cerr << log_;
+    std::exit(codes[t_]);
 }

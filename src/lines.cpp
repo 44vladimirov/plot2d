@@ -15,7 +15,7 @@ void Line::draw(const GL& gl) {
     glBindBuffer(GL_ARRAY_BUFFER, buf);
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, NULL);
-    gl.hand_color(c.data());
+    gl.hand_color(c_.data());
     glDrawArrays(mode, 0, pts.size());
 }
 

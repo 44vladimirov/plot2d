@@ -10,13 +10,13 @@ namespace Plot2D {
 
 class Line {
 public:
-    Line(const Color& c = Color()) : c(c) {}
+    Line(const Color& c = Color()) : c_(c) {}
     virtual ~Line() {}
     void add(const Point& p) { pts.push_back(p); }
     void draw(const GL& gl);
 private:
     std::vector<Point> pts;
-    Color c;
+    Color c_;
 protected:
     GLenum mode;
 };
